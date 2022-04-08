@@ -8,9 +8,7 @@ namespace Day35LINQ
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("LINQ to Data Table!");
-            //LinqToDataTable ldt = new LinqToDataTable();
-            //ldt.AddToTable();
+            
 
             //UC 1
             Console.WriteLine("Product Review Management with Linq");
@@ -55,8 +53,12 @@ namespace Day35LINQ
             //management.SkipTop_5_Records(listofpr);
 
             //UC 7
-            management.RetrieveProductId_RatingUsingSelect(listofpr);
+            //management.RetrieveProductId_RatingUsingSelect(listofpr);
 
+            //UC 8
+            Console.WriteLine("LINQ to Data Table!");
+            LinqToDataTable ldt = new LinqToDataTable();
+            ldt.AddToTable();
         }
     }
 }
