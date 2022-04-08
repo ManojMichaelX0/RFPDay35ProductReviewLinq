@@ -43,10 +43,10 @@ namespace Day35LINQ
             //management.TopRecords(listofpr);
 
             //UC 3
-            management.SelectRecords(listofpr);
+            //management.SelectRecords(listofpr);
 
             //UC 4 
-            //management.RetrieveCount(listofpr);
+            management.RetrieveCount(listofpr);
 
 
 
