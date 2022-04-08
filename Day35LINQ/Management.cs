@@ -55,7 +55,7 @@ namespace Day35LINQ
         //    }
         //}
 
-        //UC 5
+        //UC 6
         public void SkipTop_5_Records(List<ProductReview> review)
         {
             var recordedData = review.OrderByDescending(i=>i.Rating).Skip(5);
