@@ -52,8 +52,10 @@ namespace Day35LINQ
             //management.RetrieveProductId_Rating(listofpr);
 
             //UC 6
-            management.SkipTop_5_Records(listofpr);
+            //management.SkipTop_5_Records(listofpr);
 
+            //UC 7
+            management.RetrieveProductId_RatingUsingSelect(listofpr);
 
         }
     }
