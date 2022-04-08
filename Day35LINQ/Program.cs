@@ -33,20 +33,20 @@ namespace Day35LINQ
                 new ProductReview(){ProductID=9,UserID=15,Rating=9,Review="Perfect",isLike=true},
                 new ProductReview(){ProductID=9,UserID=16,Rating=7,Review="Nice",isLike=false}
             };
-            //foreach(var list in listofpr)
+            //foreach (var list in listofpr)
             //{
-            //Console.WriteLine("ProductID : " + list.ProductID + ", User ID : " + list.UserID + ", Rating :" + list.Rating + ", Review : " + list.Review + ", isLike : " + list.isLike);
+            //    Console.WriteLine("ProductID : " + list.ProductID + ", User ID : " + list.UserID + ", Rating :" + list.Rating + ", Review : " + list.Review + ", isLike : " + list.isLike);
             //}
 
             //UC 2
             Management management = new Management();
-            //management.TopRecords(listofpr);
+            management.TopRecords(listofpr);
 
             //UC 3
             //management.SelectRecords(listofpr);
 
             //UC 4 
-            management.RetrieveCount(listofpr);
+            //management.RetrieveCount(listofpr);
 
 
 
