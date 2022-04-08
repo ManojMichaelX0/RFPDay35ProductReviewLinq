@@ -40,10 +40,10 @@ namespace Day35LINQ
 
             //UC 2
             Management management = new Management();
-            management.TopRecords(listofpr);
+            //management.TopRecords(listofpr);
 
             //UC 3
-            //management.SelectRecords(listofpr);
+            management.SelectRecords(listofpr);
 
             //UC 4 
             //management.RetrieveCount(listofpr);
