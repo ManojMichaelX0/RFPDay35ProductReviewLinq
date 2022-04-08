@@ -46,7 +46,10 @@ namespace Day35LINQ
             //management.SelectRecords(listofpr);
 
             //UC 4 
-            management.RetrieveCount(listofpr);
+            //management.RetrieveCount(listofpr);
+
+            //UC 5
+            management.RetrieveProductId_Rating(listofpr);
 
 
 

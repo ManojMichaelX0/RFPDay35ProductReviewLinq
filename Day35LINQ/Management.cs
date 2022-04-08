@@ -43,5 +43,16 @@ namespace Day35LINQ
                 Console.WriteLine("Product Id : " + list.ProductId + ", Count : " + list.Count);
             }
         }
+
+        //UC 5
+
+        public void RetrieveProductId_Rating(List<ProductReview> review)
+        {
+            var recordedData = review.Select(i => new { i.ProductID, i.Review });
+            foreach(var list in recordedData)
+            {
+                Console.WriteLine("Product Id : " + list.ProductID + ", Review : " + list.Review);
+            }
+        }
     }
 }
