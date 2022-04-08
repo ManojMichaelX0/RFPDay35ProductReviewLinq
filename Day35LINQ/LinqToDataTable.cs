@@ -19,8 +19,9 @@ namespace Day35LINQ
             dt.Columns.Add("Rating");
             dt.Columns.Add("IsLike");
 
-            dt.Rows.Add("1", "Chai","Good",8,true);
-            dt.Rows.Add("2", "Coffee","Good",6,true);
+
+            dt.Rows.Add("1", "Chai", "Good", 8, true);
+            dt.Rows.Add("2", "Coffee", "Good", 6, true);
             dt.Rows.Add("3", "Green Tea", "Bad", 4, false);
             dt.Rows.Add("4", "Thumbs UP", "Great", 9, true);
             dt.Rows.Add("5", "Montian Dew", "Good", 9, true);
@@ -43,9 +44,13 @@ namespace Day35LINQ
             dt.Rows.Add("22", "Champaine", "Great", 10, true);
             dt.Rows.Add("23", "RedBull", "Good", 9, true);
             dt.Rows.Add("24", "Gluco plus", "Good", 8, true);
-            dt.Rows.Add("25","Red Wine","Okay",6, true);
+            dt.Rows.Add("25", "Red Wine", "Okay", 6, true);
 
-            DisplayProducts(dt);
+            //    DisplayProducts(dt);
+            Retrieve_ISLike(dt);
+
+
+
         }
         public void DisplayProducts(DataTable dt)
         {
@@ -59,6 +64,22 @@ namespace Day35LINQ
                 Console.WriteLine("ID :" + Id + ", ProductName : " + Name + ", Review : " + Review + ", Rating : " + rating + ", IsLike : " + ISLike);
 
             }
-        } 
+        }
+        //Uc 9
+        public void Retrieve_ISLike(DataTable dt)
+        {
+            foreach(DataRow row in dt.Rows)
+            {
+                bool IsLike = Convert.ToBoolean(row["IsLike"].ToString());
+                string Name = row["ProductName"].ToString();
+                if (IsLike == true)
+                {
+                    Console.WriteLine("Prduct Name : "+Name+", IsLike : "+IsLike);
+                }
+            }
+
+        }
+
+        
     }
 }
