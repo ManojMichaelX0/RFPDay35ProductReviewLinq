@@ -21,45 +21,48 @@ namespace Day35LINQ
             dt.Columns.Add("IsLike");
 
 
-            dt.Rows.Add(1, "Chai",1, "Good", 8, true);
-            dt.Rows.Add(2, "Coffee",1, "nice", 6, true);
-            dt.Rows.Add(3, "Green Tea",1, "Bad", 4, false);
-            dt.Rows.Add(4, "Thumbs UP",2, "Great", 9, true);
-            dt.Rows.Add(5, "Montian Dew",2, "Good", 9, true);
-            dt.Rows.Add(6, "Sting",2, "Bad", 4, false);
-            dt.Rows.Add(7, "Maaza",3, "Very Good", 10, true);
-            dt.Rows.Add(8, "Frooti",3, "Good", 7, true);
-            dt.Rows.Add(9, "Sprit",2, "Bad", 3, false);
-            dt.Rows.Add(10, "coco cola",2, "Great", 10, true);
-            dt.Rows.Add(11, "Limca",3, "Good", 9, true);
-            dt.Rows.Add(12, "Bisleri",4, "Good", 6, true);
-            dt.Rows.Add(13, "Slice",3, "Good", 8, true);
-            dt.Rows.Add(14, "Kinley",4, "Good", 6, true);
-            dt.Rows.Add(15, "Kafe Strong",5, "nice", 7, true);
-            dt.Rows.Add(16, "Knock Out",5, "Great", 9, true);
-            dt.Rows.Add(17, "Kafe Lite",5, "Worst", 2, false);
-            dt.Rows.Add(18, "Rum",10, "Great", 10, true);
-            dt.Rows.Add(19, "Whiskey",10, "Very Good", 10, true);
-            dt.Rows.Add(20, "Vodka",10, "nice", 7, true);
-            dt.Rows.Add(21, "Brandi",10, "Bad", 3, false);
-            dt.Rows.Add(22, "Champaine",5, "Great", 10, true);
-            dt.Rows.Add(23, "RedBull",2, "nice", 9, true);
-            dt.Rows.Add(24, "Gluco plus",2, "Good", 8, true);
-            dt.Rows.Add(25, "Red Wine",10, "Okay", 6, true);
+            dt.Rows.Add(1, "Chai", 1, "Good", 8, true);
+            dt.Rows.Add(2, "Coffee", 1, "nice", 6, true);
+            dt.Rows.Add(3, "Green Tea", 1, "Bad", 4, false);
+            dt.Rows.Add(4, "Thumbs UP", 2, "Great", 9, true);
+            dt.Rows.Add(5, "Montian Dew", 2, "Good", 9, true);
+            dt.Rows.Add(6, "Sting", 2, "Bad", 4, false);
+            dt.Rows.Add(7, "Maaza", 3, "Very Good", 10, true);
+            dt.Rows.Add(8, "Frooti", 3, "Good", 7, true);
+            dt.Rows.Add(9, "Sprit", 2, "Bad", 3, false);
+            dt.Rows.Add(10, "coco cola", 2, "Great", 9, true);
+            dt.Rows.Add(11, "Limca", 3, "Good", 9, true);
+            dt.Rows.Add(12, "Bisleri", 4, "Good", 6, true);
+            dt.Rows.Add(10, "Slice", 3, "Good", 8, true);
+            dt.Rows.Add(14, "Kinley", 4, "Good", 6, true);
+            dt.Rows.Add(15, "Kafe Strong", 5, "nice", 7, true);
+            dt.Rows.Add(16, "Knock Out", 5, "Great", 9, true);
+            dt.Rows.Add(10, "Kafe Lite", 5, "Worst", 7, false);
+            dt.Rows.Add(10, "Rum", 10, "Great", 6, true);
+            dt.Rows.Add(19, "Whiskey", 10, "Very Good", 10, true);
+            dt.Rows.Add(20, "Vodka", 10, "nice", 7, true);
+            dt.Rows.Add(21, "Brandi", 10, "Bad", 3, false);
+            dt.Rows.Add(22, "Champaine", 5, "Great", 10, true);
+            dt.Rows.Add(10, "RedBull", 2, "nice", 6, true);
+            dt.Rows.Add(24, "Gluco plus", 2, "Good", 8, true);
+            dt.Rows.Add(25, "Red Wine", 10, "Okay", 6, true);
 
             //    DisplayProducts(dt);
             //Uc 9
             //Retrieve_ISLike(dt);
 
             //Uc 10
-            Retrieve_Avg_Prodructs(dt);
+            //Retrieve_Avg_Prodructs(dt);
 
             //UC 11
             //NiceReview(dt);
+
+            //Uc 12
+            RatingOrder(dt);
         }
         public void DisplayProducts(DataTable dt)
         {
-            foreach(DataRow row in dt.Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 string Id = row["ID"].ToString();
                 string Name = row["ProductName"].ToString();
@@ -74,13 +77,13 @@ namespace Day35LINQ
         //Uc 9
         public void Retrieve_ISLike(DataTable dt)
         {
-            foreach(DataRow row in dt.Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 bool IsLike = Convert.ToBoolean(row["IsLike"].ToString());
                 string Name = row["ProductName"].ToString();
                 if (IsLike == true)
                 {
-                    Console.WriteLine("Prduct Name : "+Name+", IsLike : "+IsLike);
+                    Console.WriteLine("Prduct Name : " + Name + ", IsLike : " + IsLike);
                 }
             }
 
@@ -108,6 +111,7 @@ namespace Day35LINQ
         public void NiceReview(DataTable dt)
         {
             foreach (DataRow row in dt.Rows)
+
             {
                 string IsLike = row["REview"].ToString();
                 string Name = row["ProductName"].ToString();
@@ -118,6 +122,24 @@ namespace Day35LINQ
             }
         }
 
-        
+        //UC 12
+        public void RatingOrder(DataTable dt)
+        {
+
+            var Rows = from row in dt.AsEnumerable() orderby row["Rating"] descending select row;
+            DataTable dt1 = Rows.AsDataView().ToTable();
+            Console.WriteLine("User Id , Product Name, Product Id , Rating , Review");
+            Print(dt1);
+            void Print(DataTable dt1)
+            {
+                foreach (DataRow row in dt1.Rows)
+                {
+                    if (Convert.ToInt32(row["ID"]) == 10)
+                    {
+                        Console.WriteLine("\n {0},{1},{2},{3},{4},{5}", row[0], row[1], row[2], row[3], row[4], row[5]);
+                    }
+                }
+            }
+        }
     }
 }
